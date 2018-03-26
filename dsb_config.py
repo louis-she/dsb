@@ -6,7 +6,7 @@ class DsbConfig(Config):
     # Give the configuration a recognizable name
     NAME = "dsb"
 
-    LEARNING_RATE = 1e-2
+    LEARNING_RATE = 1e-3
 
     # If enabled, resizes instance masks to a smaller size to reduce
     # memory load. Recommended when using high-resolution image
@@ -48,7 +48,6 @@ class DsbConfig(Config):
     DETECTION_MIN_CONFIDENCE = 0.7 # may be smaller?
     # Non-maximum suppression threshold for detection
     DETECTION_NMS_THRESHOLD = 0.3 # 0.3
-
 
     MEAN_PIXEL = np.array([0.,0.,0.])
 
