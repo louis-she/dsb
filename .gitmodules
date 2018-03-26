@@ -1,0 +1,3 @@
+[submodule "pytorch-mask-rcnn"]
+	path = pytorch-mask-rcnn
+	url = https://github.com/multimodallearning/pytorch-mask-rcnn.git
