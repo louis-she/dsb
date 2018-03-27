@@ -42,13 +42,13 @@ if __name__ == '__main__':
 
     # Validation dataset
     dataset_val = DsbDataset()
-    dataset_val.load_dataset(val_ids, test_dir)
+    dataset_val.load_dataset(val_ids, dsb_dir)
     dataset_val.prepare()
 
-    # Test dataset
-    dataset_test = DsbDataset()
-    dataset_test.load_dataset(test_ids, test_dir, train_mode=False)
-    dataset_test.prepare()
+    # # Test dataset
+    # dataset_test = DsbDataset()
+    # dataset_test.load_dataset(test_ids, test_dir, train_mode=False)
+    # dataset_test.prepare()
 
     model = modellib.MaskRCNN(config=dsb_config, model_dir='./logs')
     model = model.cuda()

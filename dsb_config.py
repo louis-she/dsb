@@ -15,11 +15,11 @@ class DsbConfig(Config):
 
     # Train on 1 GPU and 8 images per GPU. Batch size is GPUs * images/GPU.
     GPU_COUNT = 1
-    IMAGES_PER_GPU = 2
+    IMAGES_PER_GPU = 1
     # Total number of steps (batches of samples) to yield from generator before declaring one epoch finished and starting the next epoch.
     # typically be equal to the number of samples of your dataset divided by the batch size
-    STEPS_PER_EPOCH = 300
-    VALIDATION_STEPS = 70
+    STEPS_PER_EPOCH = 612
+    VALIDATION_STEPS = 58
 
     # Number of classes (including background)
     NUM_CLASSES = 1 + 1  # background + nucleis
