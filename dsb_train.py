@@ -60,7 +60,6 @@ if __name__ == '__main__':
     state_dict.pop("classifier.linear_bbox.weight")
 
     model.load_state_dict(state_dict, strict=False)
-    model = torch.nn.DataParallel(model).cuda()
     model.train_model(dataset_train, dataset_val,
         learning_rate=dsb_config.LEARNING_RATE,
         epochs=40,
