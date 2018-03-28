@@ -19,7 +19,8 @@ from dsb_dataset import DsbDataset
 ROOT_DIR = os.getcwd()
 HOME_DIR = expanduser('~')
 DSB_DATA_DIR = join(HOME_DIR, '.kaggle/competitions/data-science-bowl-2018/')
-COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.pth")
+# COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.pth")
+COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_dsb_0002.pth")
 
 if __name__ == '__main__':
     dsb_config = DsbConfig()
@@ -44,11 +45,6 @@ if __name__ == '__main__':
     dataset_val = DsbDataset()
     dataset_val.load_dataset(val_ids, dsb_dir)
     dataset_val.prepare()
-
-    # # Test dataset
-    # dataset_test = DsbDataset()
-    # dataset_test.load_dataset(test_ids, test_dir, train_mode=False)
-    # dataset_test.prepare()
 
     model = modellib.MaskRCNN(config=dsb_config, model_dir='./logs')
     model = model.cuda()

@@ -6,27 +6,34 @@ class DsbConfig(Config):
     # Give the configuration a recognizable name
     NAME = "dsb"
 
-    LEARNING_RATE = 1e-3
+    LEARNING_RATE = 1e-4
 
     # If enabled, resizes instance masks to a smaller size to reduce
     # memory load. Recommended when using high-resolution image
-    USE_MINI_MASK = True
+    # Tweak this!
+    USE_MINI_MASK = False
+
+    # If the previous is False, then this is not used
     MINI_MASK_SHAPE = (56, 56)  # (height, width) of the mini-mask
 
     # Train on 1 GPU and 8 images per GPU. Batch size is GPUs * images/GPU.
     GPU_COUNT = 1
     IMAGES_PER_GPU = 1
+
     # Total number of steps (batches of samples) to yield from generator before declaring one epoch finished and starting the next epoch.
     # typically be equal to the number of samples of your dataset divided by the batch size
     STEPS_PER_EPOCH = 612
     VALIDATION_STEPS = 58
 
     # Number of classes (including background)
-    NUM_CLASSES = 1 + 1  # background + nucleis
+    NUM_CLASSES = 2
+
     IMAGE_MIN_DIM = 512
     IMAGE_MAX_DIM = 512
+
     IMAGE_PADDING = True  # currently, the False option is not supported
-    RPN_ANCHOR_SCALES = (8, 16, 32, 64, 128)  # anchor side in pixels, maybe add a 256?
+
+    RPN_ANCHOR_SCALES = (8, 16, 32, 64)  # anchor side in pixels, maybe add a 256?
     # The strides of each layer of the FPN Pyramid. These values
     # are based on a Resnet101 backbone.
     BACKBONE_STRIDES = [4, 8, 16, 32, 64]

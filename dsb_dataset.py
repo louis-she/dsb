@@ -6,14 +6,20 @@ import utils
 
 class DsbDataset(utils.Dataset):
 
-    def load_dataset(self, ids, directory, train_mode=True):
+    def load_dataset(self, ids, directory):
+        """Initialize instance variables
+        1. Add new class to **self.class_info**, in this case, only have 1 more class which is the nuclei.
+           The first class is always the background which is already added by super.
+        2. Add all information of dataset to **self.image_info**
+        """
         self.add_class("dsb", 1, "nuclei")
         for i, id in enumerate(ids):
             image_dir = os.path.join(directory, id)
             self.add_image("dsb", image_id=i, path=image_dir)
 
-
     def load_image(self, image_id, non_zero=None):
+        """see doc in super
+        """
         info = self.image_info[image_id]
         path = info['path']
         image_name = os.listdir(os.path.join(path, 'images'))
@@ -33,6 +39,14 @@ class DsbDataset(utils.Dataset):
             super(self.__class__).image_reference(self, image_id)
 
     def load_mask(self, image_id):
+        """Get mask matrix(composed with only 0 and 1) for a specific image_id
+        Note that this function also handled the occlusions. That means all of the masks are not
+        overlapped. It's the same as cutting a single paper by many mask.
+        Returns:
+            (mask, class_ids)
+            mask is a [W, H, number_nuclei] matrix, in fact it should be masks
+            class_ids is for every mask's class id, in this case, it's all 1(nuclei class)
+        """
         info = self.image_info[image_id]
         path = info['path']
         mask_dir = os.path.join(path, 'masks')
@@ -60,6 +74,8 @@ class DsbDataset(utils.Dataset):
         return mask, class_ids.astype(np.int32)
 
     def preprocess(self, img):
+        """8bits image, actually image in grayscale
+        """
         gray = skimage.color.rgb2gray(img.astype('uint8'))
         img = skimage.color.gray2rgb(gray)
         img *= 255.
