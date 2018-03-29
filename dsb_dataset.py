@@ -3,6 +3,7 @@ import imageio
 import skimage
 import numpy as np
 import utils
+from sys import exit
 
 class DsbDataset(utils.Dataset):
 
