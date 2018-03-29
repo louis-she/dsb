@@ -21,7 +21,7 @@ ROOT_DIR = os.getcwd()
 HOME_DIR = expanduser('~')
 DSB_DATA_DIR = join(HOME_DIR, '.kaggle/competitions/data-science-bowl-2018/')
 # COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.pth")
-COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_dsb_0003.pth")
+COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_dsb_0010.pth")
 
 test_dir = join(DSB_DATA_DIR, 'stage1_test')
 test_ids = os.listdir(test_dir)

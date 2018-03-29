@@ -6,12 +6,12 @@ class DsbConfig(Config):
     # Give the configuration a recognizable name
     NAME = "dsb"
 
-    LEARNING_RATE = 1e-4
+    LEARNING_RATE = 1e-3
 
     # If enabled, resizes instance masks to a smaller size to reduce
     # memory load. Recommended when using high-resolution image
     # Tweak this!
-    USE_MINI_MASK = False
+    USE_MINI_MASK = True
 
     # If the previous is False, then this is not used
     MINI_MASK_SHAPE = (56, 56)  # (height, width) of the mini-mask
@@ -33,7 +33,7 @@ class DsbConfig(Config):
 
     IMAGE_PADDING = True  # currently, the False option is not supported
 
-    RPN_ANCHOR_SCALES = (8, 16, 32, 64)  # anchor side in pixels, maybe add a 256?
+    RPN_ANCHOR_SCALES = (8, 16, 32, 64, 128)  # anchor side in pixels, maybe add a 256?
     # The strides of each layer of the FPN Pyramid. These values
     # are based on a Resnet101 backbone.
     BACKBONE_STRIDES = [4, 8, 16, 32, 64]
