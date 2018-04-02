@@ -1,16 +1,37 @@
+from os import getcwd
+from os.path import join, expanduser
+
 import numpy as np
 from config import Config
 
 class DsbConfig(Config):
 
+    # DSB data root directory
+    ROOT_DIR = getcwd()
+    HOME_DIR = expanduser('~')
+    DSB_DATA_DIR = join(HOME_DIR, '.kaggle/competitions/data-science-bowl-2018/')
+
+    # Weights path
+    STATE_DICT_PATH = join(ROOT_DIR, "mask_rcnn_coco.pth")
+
+    # If the state dict file is mask_rcnn_coco, set this to True
+    IS_COCO_STATE = True
+
     # Give the configuration a recognizable name
     NAME = "dsb"
 
-    LEARNING_RATE = 1e-3
+    # Validation dataset proportion
+    VALIDATION_PROPORTION = 0.1
+
+    # Backbone architecture, valid options are resnet50, resnet101
+    BACKBONE_ARCH = 'resnet50'
+
+    # Print progress every n steps
+    SHOW_PROGRESS_STEPS = 2
 
     # If enabled, resizes instance masks to a smaller size to reduce
     # memory load. Recommended when using high-resolution image
-    # Tweak this!
+    # Tweak this
     USE_MINI_MASK = True
 
     # If the previous is False, then this is not used
