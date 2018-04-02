@@ -45,13 +45,15 @@ python build.py
 cp -R _ext dsb/pytorch-mask-rcnn/roialign/roi_align/_ext
 ```
 
-4. Using the following command to train the model
+4. Download pretrained weights on COCO dataset. https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5
+
+5. Using the following command to train the model
 
 ```
 python dsb_train.py
 ```
 
-5. Tweak the configures in `dsb_config.py`, the learning rate and training strategy can be modified directly in `dsb_train.py`.
+6. Tweak the configures in `dsb_config.py`, the learning rate and training strategy can be modified directly in `dsb_train.py`.
 
 ## Result
 
