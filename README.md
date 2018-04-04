@@ -45,7 +45,7 @@ python build.py
 cp -R _ext dsb/pytorch-mask-rcnn/roialign/roi_align/_ext
 ```
 
-4. Download pretrained weights on COCO dataset. https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5
+4. Download pretrained weights on COCO dataset `mask_rcnn_coco.pth` at https://drive.google.com/drive/folders/1LXUgC2IZUYNEoXr05tdqyKFZY0pZyPDc
 
 5. Using the following command to train the model
 
