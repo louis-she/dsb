@@ -1,3 +1,4 @@
 [submodule "pytorch-mask-rcnn"]
 	path = pytorch-mask-rcnn
 	url = https://github.com/louis-she/pytorch-mask-rcnn.git
+	branch = stable

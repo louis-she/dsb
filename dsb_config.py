@@ -10,11 +10,14 @@ class DsbConfig(Config):
     ROOT_DIR = getcwd()
     HOME_DIR = expanduser('~')
     DSB_DATA_DIR = join(HOME_DIR, '.kaggle/competitions/data-science-bowl-2018/')
+    LOG_DIR = join(ROOT_DIR, './logs')
 
-    # Weights path
+    # Weights path, if one wants to resume from last run, change this
+    # options together with the IS_COCO_STATE
     STATE_DICT_PATH = join(ROOT_DIR, "mask_rcnn_coco.pth")
 
     # If the state dict file is mask_rcnn_coco, set this to True
+    # If resume from last run, set this to False
     IS_COCO_STATE = True
 
     # Give the configuration a recognizable name
@@ -22,12 +25,6 @@ class DsbConfig(Config):
 
     # Validation dataset proportion
     VALIDATION_PROPORTION = 0.1
-
-    # Backbone architecture, valid options are resnet50, resnet101
-    BACKBONE_ARCH = 'resnet50'
-
-    # Print progress every n steps
-    SHOW_PROGRESS_STEPS = 2
 
     # If enabled, resizes instance masks to a smaller size to reduce
     # memory load. Recommended when using high-resolution image
@@ -43,8 +40,8 @@ class DsbConfig(Config):
 
     # Total number of steps (batches of samples) to yield from generator before declaring one epoch finished and starting the next epoch.
     # typically be equal to the number of samples of your dataset divided by the batch size
-    STEPS_PER_EPOCH = 612
-    VALIDATION_STEPS = 58
+    STEPS_PER_EPOCH = 10
+    VALIDATION_STEPS = 10
 
     # Number of classes (including background)
     NUM_CLASSES = 2

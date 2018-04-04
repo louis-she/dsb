@@ -1,7 +1,7 @@
 import sys
 import random
-from os import listdir
-from os.path import join, expanduser
+from os import listdir, mkdir
+from os.path import join, expanduser, isdir
 
 # ADD pytorch_mask_rcnn to sys path
 sys.path.append('./pytorch-mask-rcnn')
@@ -35,21 +35,27 @@ if __name__ == '__main__':
     dataset_val.load_dataset(valid_ids, join(dsb_config.DSB_DATA_DIR, 'stage1_train'))
     dataset_val.prepare()
 
-    model = modellib.MaskRCNN(config=dsb_config, model_dir='./logs')
+    if not isdir(dsb_config.LOG_DIR):
+        mkdir(dsb_config.LOG_DIR)
+
+    model = modellib.MaskRCNN(config=dsb_config, model_dir=dsb_config.LOG_DIR)
     model = model.cuda()
 
     state_dict = torch.load(dsb_config.STATE_DICT_PATH)
     # class of COCO is 81 while dsb is 2
     # so we should remove the corresponding parameters
-    if dsb_config.IS_COCO_STATE:
-        state_dict.pop("mask.conv5.bias")
-        state_dict.pop("mask.conv5.weight")
-        state_dict.pop("classifier.linear_class.bias")
-        state_dict.pop("classifier.linear_class.weight")
-        state_dict.pop("classifier.linear_bbox.bias")
-        state_dict.pop("classifier.linear_bbox.weight")
 
-    model.load_state_dict(state_dict, strict=False)
+    def state_modifier(state_dict):
+        if dsb_config.IS_COCO_STATE:
+            state_dict.pop("mask.conv5.bias")
+            state_dict.pop("mask.conv5.weight")
+            state_dict.pop("classifier.linear_class.bias")
+            state_dict.pop("classifier.linear_class.weight")
+            state_dict.pop("classifier.linear_bbox.bias")
+            state_dict.pop("classifier.linear_bbox.weight")
+        return state_dict
+
+    model.load_weights(dsb_config.STATE_DICT_PATH, state_modifier)
 
     # Tweak the training strategy
     model.train_model(dataset_train, dataset_val,
