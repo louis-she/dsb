@@ -40,8 +40,8 @@ class DsbConfig(Config):
 
     # Total number of steps (batches of samples) to yield from generator before declaring one epoch finished and starting the next epoch.
     # typically be equal to the number of samples of your dataset divided by the batch size
-    STEPS_PER_EPOCH = 10
-    VALIDATION_STEPS = 10
+    STEPS_PER_EPOCH = 612
+    VALIDATION_STEPS = 58
 
     # Number of classes (including background)
     NUM_CLASSES = 2

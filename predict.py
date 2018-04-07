@@ -19,8 +19,7 @@ from dsb_dataset import DsbDataset
 ROOT_DIR = os.getcwd()
 HOME_DIR = expanduser('~')
 DSB_DATA_DIR = join(HOME_DIR, '.kaggle/competitions/data-science-bowl-2018/')
-# COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.pth")
-COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_dsb_0020.pth")
+COCO_MODEL_PATH = os.path.join(ROOT_DIR, "logs/dsb20180404T2127/mask_rcnn_dsb_0001.pth")
 
 test_dir = join(DSB_DATA_DIR, 'stage1_test')
 test_ids = os.listdir(test_dir)
