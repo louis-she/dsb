@@ -13,7 +13,6 @@ import torch
 import model as modellib
 
 from dsb_config import DsbConfig, InferenceConfig
-from dsb_utils import train_valid_split, split_on_column
 from dsb_dataset import DsbDataset
 
 
