@@ -46,12 +46,12 @@ class DsbConfig(Config):
     # Number of classes (including background)
     NUM_CLASSES = 2
 
-    IMAGE_MIN_DIM = 512
-    IMAGE_MAX_DIM = 512
+    IMAGE_MIN_DIM = 1024
+    IMAGE_MAX_DIM = 1024
 
     IMAGE_PADDING = True  # currently, the False option is not supported
 
-    RPN_ANCHOR_SCALES = (8, 16, 32, 64, 128)  # anchor side in pixels, maybe add a 256?
+    RPN_ANCHOR_SCALES = (4, 8, 16, 32, 64, 128, 256)  # anchor side in pixels, maybe add a 256?
     # The strides of each layer of the FPN Pyramid. These values
     # are based on a Resnet101 backbone.
     BACKBONE_STRIDES = [4, 8, 16, 32, 64]
@@ -70,7 +70,7 @@ class DsbConfig(Config):
     DETECTION_MAX_INSTANCES = 500
     # Minimum probability value to accept a detected instance
     # ROIs below this threshold are skipped
-    DETECTION_MIN_CONFIDENCE = 0.7 # may be smaller?
+    DETECTION_MIN_CONFIDENCE = 0.5 # may be smaller?
     # Non-maximum suppression threshold for detection
     DETECTION_NMS_THRESHOLD = 0.3 # 0.3
 
