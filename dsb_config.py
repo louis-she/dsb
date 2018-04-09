@@ -51,7 +51,7 @@ class DsbConfig(Config):
 
     IMAGE_PADDING = True  # currently, the False option is not supported
 
-    RPN_ANCHOR_SCALES = (4, 8, 16, 32, 64, 128, 256)  # anchor side in pixels, maybe add a 256?
+    RPN_ANCHOR_SCALES = (8, 16, 32, 64, 128)
     # The strides of each layer of the FPN Pyramid. These values
     # are based on a Resnet101 backbone.
     BACKBONE_STRIDES = [4, 8, 16, 32, 64]
